@@ -1,0 +1,12 @@
+variables
+libreria mysqli
+instancia de objeto
+objeto
+atributos
+parametros
+condicionales if y else
+metodo o funcion
+Array
+estructuras de control
+ciclos (while, do-while, for, foreach)
+metodo POST y GET (HTTP)
