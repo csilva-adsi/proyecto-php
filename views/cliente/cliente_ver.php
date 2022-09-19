@@ -51,12 +51,30 @@
 					  <h5>Datos basicos</h5>
 				      <hr>
 					
-						<div class="row">								
-							<div class="col-sm-6">
+						<div class="row ">									
+							<div class="col-sm-3">
+								<div class="card text-center">
+									<div class="card-body">
+                                      <?php 
+                                        if(isset($cliente["cliFoto"]))
+                                        {
+                                      ?>
+									        <img src="./documentos/<?php echo $cliente["cliDocumento"]."/".$cliente["cliFoto"]?>" width="100px" height="120px">
+                                      <?php      
+                                        }else{
+                                      ?>
+                                            <img src="../../assets/images/cliente.jpg" width="100px" height="120px">
+                                      <?php 
+                                        }
+                                      ?>
+                                    </div>  
+							    </div>
+							</div>							
+							<div class="col-sm-4">
 								<!-- Campo Nombres -->
 								  <div class="mb-3">
 									<label for="nombres" class="form-label">Nombres</label>
-									<input type="text" class="form-control" id="nombres" name="nombres" minlength="3" maxlength="30" pattern="^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$" required value="<?php echo $cliente["cliNombres"]?>" required>
+									<input type="text" class="form-control" id="nombres" name="nombres" minlength="3" maxlength="30" pattern="^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$" required value="<?php echo $cliente["cliNombres"]?>" readonly>
 									<div class="invalid-feedback">
 										Ingrese los nombres del cliente
 									 </div>
@@ -65,11 +83,11 @@
 									 </div>
 								  </div>
 							</div>
-							<div class="col-sm-6">
+							<div class="col-sm-5">
 								 <!-- Campo Apellidos -->
 								  <div class="mb-3">
 									<label for="apellidos" class="form-label">Apellidos</label>
-									<input type="text" class="form-control" id="apellidos" name="apellidos" minlength="3" maxlength="30" required value="<?php echo $cliente["cliApellidos"]?>" required>
+									<input type="text" class="form-control" id="apellidos" name="apellidos" minlength="3" maxlength="30" required value="<?php echo $cliente["cliApellidos"]?>" readonly >
 									<div class="invalid-feedback">
 										Ingrese los apellidos del cliente
 									 </div>
@@ -81,7 +99,7 @@
 								<!-- Campo Tipo de documento -->
 							  <div class="mb-3">
 								<label for="tipoDocumento" class="form-label">Tipo de documento</label>
-								<select class="form-select" id="tipoDocumento" name="tipoDocumento" aria-label="Default select example" >
+								<select class="form-select" id="tipoDocumento" name="tipoDocumento" aria-label="Default select example" disabled>
 								  <option selected disabled value="">Seleccione un valor</option>
 								  <option value="1"  <?php if( $cliente["cliTipoDocumento"] == '1') { ?> selected  <?php } ?>>CC</option>
 								  <option value="2"  <?php if( $cliente["cliTipoDocumento"] == '2') { ?> selected  <?php } ?>>CE</option>
@@ -97,7 +115,7 @@
 								<!-- Campo documento -->
 								  <div class="mb-3">
 									<label for="documento" class="form-label">Documento</label>
-									<input type="number" class="form-control" id="documento" name="documento" required  value="<?php echo $cliente["cliDocumento"] ?>" >									
+									<input type="number" class="form-control" id="documento" name="documento" required  value="<?php echo $cliente["cliDocumento"] ?>" readonly >						
 									<div class="invalid-feedback">
 											Ingrese el documento del cliente
 									</div>
@@ -109,7 +127,7 @@
 								<!-- Campo Fecha -->
 							  <div class="mb-3">
 								<label for="fecha" class="form-label">Fecha nacimiento</label>
-								<input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"  value="<?php echo $cliente["cliFechaNacimiento"]  ?>" required>
+								<input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"  value="<?php echo $cliente["cliFechaNacimiento"]  ?>" readonly >
 							  </div>
 							</div>					  
 						
@@ -133,7 +151,7 @@
 									<!-- Campo Direccion -->
 									  <div class="mb-3">
 										<label for="direccion" class="form-label">Direccion</label>
-										<input type="text" class="form-control" id="direccion" name="direccion" minlength="10" value="<?php echo $cliente["cliDireccion"]  ?>" required>
+										<input type="text" class="form-control" id="direccion" name="direccion" minlength="10" required  value="<?php echo $cliente["cliDireccion"]  ?>" readonly>
 										<div class="invalid-feedback">
 											Ingrese la dirección del cliente. Minimo 10 caracteres
 									</div>
@@ -143,7 +161,7 @@
 									<!-- Campo Barrio -->
 									  <div class="mb-3">
 										<label for="barrio" class="form-label">Barrio</label>
-										<input type="text" class="form-control" id="barrio" name="barrio" value="<?php echo $cliente["cliBarrio"]  ?>" required>
+										<input type="text" class="form-control" id="barrio" name="barrio" required  value="<?php echo $cliente["cliBarrio"]  ?>" readonly >
 										<div class="invalid-feedback">
 											Ingrese el barrio del cliente
 									</div>
@@ -156,7 +174,7 @@
 									<!-- Campo Departamento -->
 									  <div class="mb-3">
 										<label for="departamento" class="form-label">Departamento</label>
-										<select class="form-select" id="departamento" name="departamento" aria-label="Default select example" required>
+										<select class="form-select" id="departamento" name="departamento" aria-label="Default select example" disabled>
 										  <option selected disabled value="">Seleccione un valor</option>
 										  <option value="1" <?php if( $cliente["cliDepartamento"]  == '1') { ?> selected  <?php } ?>>Antioquia</option>
 										  <option value="2" <?php if( $cliente["cliDepartamento"]  == '2') { ?> selected  <?php } ?>>Valle</option>
@@ -172,7 +190,7 @@
 									<!-- Campo Ciudad -->
 									  <div class="mb-3">
 										<label for="ciudad" class="form-label">Ciudad</label>
-										<select class="form-select" id="ciudad" name="ciudad" aria-label="Default select example" required>
+										<select class="form-select" id="ciudad" name="ciudad" aria-label="Default select example" disabled>
 										  <option selected disabled value="">Seleccione un valor</option>
 										  <option value="1"  <?php if( $cliente["cliCiudad"]  == '1') { ?> selected  <?php } ?>>Medellin</option>
 										  <option value="2"  <?php if( $cliente["cliCiudad"]  == '2') { ?> selected  <?php } ?>>Cali</option>
@@ -191,7 +209,7 @@
 									<!-- Campo Celular -->
 									  <div class="mb-3">
 										<label for="celular" class="form-label">Celular</label>
-										<input type="number" class="form-control" id="celular" name="celular" required  value="<?php echo $cliente["cliCelular"]  ?>" required>
+										<input type="number" class="form-control" id="celular" name="celular" required  value="<?php echo $cliente["cliCelular"]  ?>" readonly>
 										<div class="invalid-feedback">
 											Ingrese el celular del cliente
 										</div>
@@ -202,7 +220,7 @@
 									<!-- Campo Email -->
 								  <div class="mb-3">
 									<label for="email" class="form-label">Email</label>
-									<input type="email" class="form-control" id="email" name="email" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  value="<?php echo $cliente["cliEmail"]  ?>" required>
+									<input type="email" class="form-control" id="email" name="email" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  value="<?php echo $cliente["cliEmail"]  ?>" readonly>
 									<div class="invalid-feedback">
 											Ingrese el email del cliente
 									</div>
@@ -212,14 +230,7 @@
 					</div> 			
 				
 				  <div class="text-center">
-                  <?php if(isset($_GET['accion'])) {?>
-					
-                            <a href="cliente_editar.php?idCliente=<?php echo $cliente["idCliente"]   ?>" class="btn btn-success">Editar</a>
-                                            
-
-                        <?php } else { ?>
-                        <button type="submit" class="btn btn-danger">Guardar</button>
-                    <?php } ?>
+                        <a href="cliente_editar.php?idCliente=<?php echo $cliente["idCliente"] ?>" class="btn btn-success">Editar</a>
 				  </div>
 				</form>
 			

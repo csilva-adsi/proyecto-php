@@ -9,9 +9,9 @@ class ClienteController
         return ClienteModel::getClientes();
     }
 
-    public static function crearCliente($nombres, $apellidos, $tipoDocumento, $documento, $celular, $email, $direccion, $barrio, $fechaNacimiento, $departamento, $ciudad)
+    public static function crearCliente($nombres, $apellidos, $tipoDocumento, $documento, $celular, $email, $direccion, $barrio, $fechaNacimiento, $departamento, $ciudad, $foto)
     {
-        return ClienteModel::crearCliente($nombres, $apellidos, $tipoDocumento, $documento, $celular, $email, $direccion, $barrio, $fechaNacimiento, $departamento, $ciudad);
+        return ClienteModel::crearCliente($nombres, $apellidos, $tipoDocumento, $documento, $celular, $email, $direccion, $barrio, $fechaNacimiento, $departamento, $ciudad, $foto);
     }
 
     public static function eliminarCliente($id)

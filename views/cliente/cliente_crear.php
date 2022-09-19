@@ -41,7 +41,7 @@
 				 ?>
 				 
 
-				 <form action ="cliente_registrar.php" method="POST" role="form" class="needs-validation" novalidate>
+				 <form action ="cliente_registrar.php" method="POST" role="form" class="needs-validation" novalidate  enctype="multipart/form-data">
 				 
 				  <div class="row">
 				  
@@ -158,7 +158,7 @@
 									  <div class="mb-3">
 										<label for="pais" class="form-label">Pais</label>
 										<select class="form-select" id="pais" name="pais" aria-label="Default select example" required>
-										  <option selected disabled value="">Seleccione un valor</option>
+										  <option selected value="">Seleccione un valor</option>
 										  <?php 
 										  	foreach($paises as $registro){
 											?>
@@ -227,7 +227,7 @@
 									<!-- Campo Celular -->
 									  <div class="mb-3">
 										<label for="foto" class="form-label">Foto</label>
-										<input type="file" class="form-control" id="foto" name="foto">
+										<input type="file" class="form-control" id="foto" name="foto" accept=".png, .jpg, .jpeg">
 									  </div> 
 								</div>
 						   </div>

@@ -60,7 +60,7 @@
                                     <td><?php echo $cliente["cliEmail"] ?></td>
                                     <td><?php echo $cliente["cliFechaNacimiento"] ?></td>
                                     <td>
-										<a href="cliente_editar.php?idCliente=<?php echo $cliente["idCliente"] ?>&accion=ver" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"> Ver</i></a>
+										<a href="cliente_ver.php?idCliente=<?php echo $cliente["idCliente"] ?>" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"> Ver</i></a>
                                         <a href="cliente_editar.php?idCliente=<?php echo $cliente['idCliente']?>" class="btn btn-success btn-sm"><i class="bi bi-pencil-square"> Editar</i></a>
                                         <a href="javascript:confirmarEliminacion('cliente_eliminar.php?idCliente=<?php echo $cliente['idCliente'] ?>')" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"> Eliminar</i></a>
                                     </td>
@@ -88,38 +88,56 @@
 				}
 			}
 		
-		//Esportar datos de la tabla a diferentes formatos
-			$(document).ready(function () {
+		//Exportar datos de la tabla a diferentes formatos
+		$(document).ready(function () {
 				$('#example').DataTable(
-					{	
-						dom: 'Bfrtip',
-						buttons: [
-							 //'print', 'csv', 'pdf'
-							 {
-								extend:    'print',
-								text:      '<i class="fa fa-print"></i>',
-								titleAttr: 'Print'
-							},
-							{
-								extend:    'excelHtml5',
-								text:      '<i class="fa fa-file-excel-o"></i>',
-								titleAttr: 'Excel'
-							},
-							{
-								extend:    'csvHtml5',
-								text:      '<i class="fa fa-file-text-o"></i>',
-								titleAttr: 'CSV'
-							},
-							{
-								extend:    'pdfHtml5',
-								text:      '<i class="fa fa-file-pdf-o"></i>',
-								titleAttr: 'PDF'
-							}
-						],
-						
+					{ 
+						language: {
+									lengthMenu: "Mostrar _MENU_ registros",
+									zeroRecords: "No se encontraron resultados",
+									info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+									infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+									infoFiltered: "(Filtrando de un total de _MAX_ registros)",
+									sSearch: "Buscar:",
+									oPaginate: {
+										sFirst: "Primero",
+										sLast: "Ultimo",
+										sNext: "Siguiente",
+										sPrevious: "Anterior"
+									},
+									sProcessing: "Procesando...",
+									},
+									
+									
+					dom: 'Bfrtilp',
+					buttons: [
+						{
+						extend: 'print',
+						text: '<i class="bi bi-printer"></i>',
+						titleAttr: 'print',
+						className: 'btn btn-success btn-md'
+						},
+						{
+					extend: 'excelHtml5',
+						text: '<i class="bi bi-file-earmark-excel"></i>',
+						titleAttr: 'Excel',
+						className: 'btn btn-info btn-md'
+						},
+						{
+						extend: 'csvHtml5',
+						text: '<i class="bi bi-filetype-csv"></i>',
+						titleAttr: 'CSV',
+						className: 'btn btn-warning btn-md'
+						},
+						{
+						extend: 'pdfHtml5',
+						text: '<i class="bi bi-filetype-pdf"></i>',
+						titleAttr: 'PDF',
+						className: 'btn btn-danger btn-md'
+						}
+					],
 
-					}
-				);
+				});
 			});
 		</script>
 

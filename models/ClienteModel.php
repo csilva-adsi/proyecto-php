@@ -15,7 +15,8 @@ class ClienteModel
     private $direccion;
     private $barrio;
     private $departamento;
-    private $ciudad;
+    private $ciudad;    
+    private $foto;
 
     public static function getClientes()
     {
@@ -30,9 +31,9 @@ class ClienteModel
         return $clientes;
     }
 
-    public static function crearCliente($nombres, $apellidos, $tipoDocumento, $documento, $celular, $email, $direccion, $barrio, $fechaNacimiento, $departamento, $ciudad)
+    public static function crearCliente($nombres, $apellidos, $tipoDocumento, $documento, $celular, $email, $direccion, $barrio, $fechaNacimiento, $departamento, $ciudad, $foto)
     {        
-            $query = "INSERT INTO cliente(cliNombres, cliApellidos, cliTipoDocumento, cliDocumento, cliFechaNacimiento, cliCelular, cliEmail, cliDireccion, cliBarrio, cliDepartamento, cliCiudad) VALUES (:nombres, :apellidos, :tipoDocumento, :documento, :fechaNacimiento, :celular, :email, :direccion, :barrio,  :departamento, :ciudad)";
+            $query = "INSERT INTO cliente(cliNombres, cliApellidos, cliTipoDocumento, cliDocumento, cliFechaNacimiento, cliCelular, cliEmail, cliDireccion, cliBarrio, cliDepartamento, cliCiudad, cliFoto) VALUES (:nombres, :apellidos, :tipoDocumento, :documento, :fechaNacimiento, :celular, :email, :direccion, :barrio,  :departamento, :ciudad, :foto)";
                 
             $resultado = Conexion::conectar()->prepare($query);
             
@@ -46,7 +47,8 @@ class ClienteModel
             $resultado->bindParam(":direccion", $direccion);
             $resultado->bindParam(":barrio", $barrio);
             $resultado->bindParam(":departamento", $departamento);
-            $resultado->bindParam(":ciudad", $ciudad);            
+            $resultado->bindParam(":ciudad", $ciudad); 
+            $resultado->bindParam(":foto", $foto);            
             
             if ($resultado->execute()) {
                 return true;
